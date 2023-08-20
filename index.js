@@ -35,7 +35,7 @@ app.get("/api", async (req, res) => {
     options = {
       args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
       defaultViewport: chrome.defaultViewport,
-      executablePath: await chrome.executablePath(),
+      executablePath: await chrome.executablePath,
       headless: true,
       ignoreHTTPSErrors: true,
     };
