@@ -4,7 +4,7 @@ let chrome = {};
 let puppeteer;
 
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
-  chrome = require("chrome-aws-lambda");
+  chrome = require("@sparticuz/chromium");
   puppeteer = require("puppeteer-core");
 } else {
   puppeteer = require("puppeteer");
@@ -35,7 +35,7 @@ app.get("/api", async (req, res) => {
     options = {
       args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
       defaultViewport: chrome.defaultViewport,
-      executablePath: await chrome.executablePath,
+      executablePath: await chrome.executablePath(),
       headless: true,
       ignoreHTTPSErrors: true,
     };
